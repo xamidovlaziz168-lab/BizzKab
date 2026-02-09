@@ -1,4 +1,4 @@
-
+Азизович, [09.02.2026 21:05]
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -23,12 +23,11 @@ body{
     font-weight:700;
 }
 
-/* CONTAINER */
+/* CARD */
 .container{
     padding:10px;
 }
 
-/* CARD */
 .card{
     background:white;
     margin:8px 0;
@@ -43,24 +42,6 @@ body{
     height:90px;
     border-radius:12px;
     object-fit:cover;
-}
-
-.info{
-    flex:1;
-    margin-left:10px;
-}
-
-.title{
-    font-weight:700;
-}
-
-.desc{
-    font-size:13px;
-    color:#666;
-}
-
-.price{
-    font-weight:700;
 }
 
 /* PLUS MINUS */
@@ -111,13 +92,11 @@ body{
 
 <h3>🍞 Non kabob — Mol go‘shtli</h3>
 
-<!-- 1 -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=400">
-<div class="info">
-<div class="title">Non kabob MINI</div>
-<div class="desc">Mol go‘shti, sous, bodring, pomidor</div>
-<div class="price">26 000 so‘m</div>
+<img src="RASM_1.jpg" id="img1">
+<div>
+<b>Non kabob MINI</b><br>
+26 000 so‘m
 </div>
 <div class="controls">
 <button onclick="minus(1)">-</button>
@@ -126,13 +105,11 @@ body{
 </div>
 </div>
 
-<!-- 2 -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400">
-<div class="info">
-<div class="title">Non kabob ODDIY</div>
-<div class="desc">Mol go‘shti, sous, bodring, pomidor</div>
-<div class="price">32 000 so‘m</div>
+<img src="RASM_2.jpg" id="img2">
+<div>
+<b>Non kabob ODDIY</b><br>
+32 000 so‘m
 </div>
 <div class="controls">
 <button onclick="minus(2)">-</button>
@@ -141,13 +118,11 @@ body{
 </div>
 </div>
 
-<!-- 3 -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400">
-<div class="info">
-<div class="title">Non kabob KATTA</div>
-<div class="desc">Mol go‘shti, sous, salat bargi, pomidor</div>
-<div class="price">38 000 so‘m</div>
+<img src="RASM_3.jpg" id="img3">
+<div>
+<b>Non kabob KATTA</b><br>
+38 000 so‘m
 </div>
 <div class="controls">
 <button onclick="minus(3)">-</button>
@@ -158,13 +133,11 @@ body{
 
 <h3>🍗 Non kabob — Tovuq go‘shtli</h3>
 
-<!-- 4 -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400">
-<div class="info">
-<div class="title">Tovuq MINI</div>
-<div class="desc">Tovuq filesi, sous, pomidor, sir, bodring</div>
-<div class="price">18 000 so‘m</div>
+<img src="RASM_4.jpg" id="img4">
+<div>
+<b>Tovuq MINI</b><br>
+18 000 so‘m
 </div>
 <div class="controls">
 <button onclick="minus(4)">-</button>
@@ -173,13 +146,11 @@ body{
 </div>
 </div>
 
-<!-- 5 -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400">
-<div class="info">
-<div class="title">Tovuq ODDIY</div>
-<div class="desc">Tovuq filesi, sous, pomidor, sir, sho‘r bodring</div>
-<div class="price">22 000 so‘m</div>
+<img src="RASM_5.jpg" id="img5">
+<div>
+<b>Tovuq ODDIY</b><br>
+22 000 so‘m
 </div>
 <div class="controls">
 <button onclick="minus(5)">-</button>
@@ -188,18 +159,14 @@ body{
 </div>
 </div>
 
-<!-- 6 -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=400">
-<div class="info">
-<div class="title">Tovuq KATTA</div>
-<div class="desc">Tovuq filesi, sous, salat bargi, sir</div>
-<div class="price">28 000 so‘m</div>
+<img src="RASM_6.jpg" id="img6">
+<div>
+<b>Tovuq KATTA</b><br>
+28 000 so‘m
 </div>
 <div class="controls">
 <button onclick="minus(6)">-</button>
-
-Азизович, [09.02.2026 20:51]
 <span class="count" id="c6">0</span>
 <button onclick="plus(6)">+</button>
 </div>
@@ -207,13 +174,11 @@ body{
 
 <h3>🌭 Monster Hot-dog</h3>
 
-<!-- 7 -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=400">
-<div class="info">
-<div class="title">Monster MINI (1 ta)</div>
-<div class="desc">Sosiska, sir, pomidor, kolbasa, mayonez</div>
-<div class="price">16 000 so‘m</div>
+<img src="RASM_7.jpg" id="img7">
+<div>
+<b>Monster MINI</b><br>
+16 000 so‘m
 </div>
 <div class="controls">
 <button onclick="minus(7)">-</button>
@@ -222,13 +187,11 @@ body{
 </div>
 </div>
 
-<!-- 8 -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400">
-<div class="info">
-<div class="title">Monster KATTA (2 ta)</div>
-<div class="desc">2 ta sosiska, sir, pomidor, kolbasa, mayonez</div>
-<div class="price">20 000 so‘m</div>
+<img src="RASM_8.jpg" id="img8">
+<div>
+<b>Monster KATTA</b><br>
+20 000 so‘m
 </div>
 <div class="controls">
 <button onclick="minus(8)">-</button>
@@ -238,7 +201,6 @@ body{
 </div>
 
 <div style="height:90px"></div>
-
 </div>
 
 <div class="cart">
@@ -269,6 +231,7 @@ function minus(id){
     }
 }
 
+Азизович, [09.02.2026 21:05]
 function updateTotal(){
     let total = 0;
     for(let i=1;i<=8;i++){
