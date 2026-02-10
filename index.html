@@ -15,50 +15,52 @@ margin:0;
 
 h1{margin-top:20px;}
 
-.item{
-background:#cc0000;
-width:280px;
+.box{
+background:#990000;
+width:330px;
 margin:15px auto;
 padding:15px;
 border-radius:10px;
 }
 
+.item{
+background:#cc0000;
+margin:10px auto;
+padding:10px;
+border-radius:8px;
+}
+
 button{
-width:40px;
-height:40px;
-font-size:20px;
+width:35px;
+height:35px;
+font-size:18px;
 background:#ffd700;
 color:#b30000;
 border:none;
-border-radius:5px;
-}
-
-#cart{
-background:#990000;
-width:300px;
-margin:20px auto;
-padding:15px;
-border-radius:10px;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
 }
 
 input{
 width:90%;
 padding:10px;
 margin:5px;
-border-radius:5px;
+border-radius:6px;
 border:none;
 }
 
 .orderBtn{
-display:inline-block;
 margin-top:10px;
-padding:12px 20px;
+padding:12px;
 background:#ffd700;
 color:#b30000;
 border:none;
 border-radius:8px;
+font-size:16px;
 font-weight:bold;
 cursor:pointer;
+width:90%;
 }
 </style>
 </head>
@@ -66,30 +68,101 @@ cursor:pointer;
 
 <h1>BizzKab Fast Food</h1>
 
-<!-- MIJOZ MA'LUMOTI -->
-<div id="cart">
+<div class="box">
 <h3>Mijoz ma'lumoti</h3>
 <input id="name" placeholder="Ismingiz">
 <input id="phone" placeholder="Telefon raqam">
 </div>
 
+<!-- NON KABOB GO'SHTLI -->
+<div class="box">
+<h3>Non Kabob Go'shtli</h3>
+
 <div class="item">
-Non Kabob 25 000
+Mini – 26 000
 <br>
-<button onclick="change('nonkabob',-1)">-</button>
-<span id="nonkabob">0</span>
-<button onclick="change('nonkabob',1)">+</button>
+<button onclick="change('gosht_mini',-1)">-</button>
+<span id="gosht_mini">0</span>
+<button onclick="change('gosht_mini',1)">+</button>
 </div>
 
 <div class="item">
-Tovuq Kabob 28 000
+Oddiy – 32 000
 <br>
-<button onclick="change('tovuq',-1)">-</button>
-<span id="tovuq">0</span>
-<button onclick="change('tovuq',1)">+</button>
+<button onclick="change('gosht_oddiy',-1)">-</button>
+<span id="gosht_oddiy">0</span>
+<button onclick="change('gosht_oddiy',1)">+</button>
 </div>
 
-<div id="cart">
+<div class="item">
+Katta – 38 000
+<br>
+<button onclick="change('gosht_katta',-1)">-</button>
+<span id="gosht_katta">0</span>
+<button onclick="change('gosht_katta',1)">+</button>
+</div>
+</div>
+
+<!-- NON KABOB TOVUQLI -->
+<div class="box">
+<h3>Non Kabob Tovuqli</h3>
+
+<div class="item">
+Mini – 18 000
+<br>
+<button onclick="change('tovuq_mini',-1)">-</button>
+<span id="tovuq_mini">0</span>
+<button onclick="change('tovuq_mini',1)">+</button>
+</div>
+
+<div class="item">
+Oddiy – 22 000
+<br>
+<button onclick="change('tovuq_oddiy',-1)">-</button>
+<span id="tovuq_oddiy">0</span>
+<button onclick="change('tovuq_oddiy',1)">+</button>
+</div>
+
+<div class="item">
+Katta – 28 000
+<br>
+<button onclick="change('tovuq_katta',-1)">-</button>
+<span id="tovuq_katta">0</span>
+<button onclick="change('tovuq_katta',1)">+</button>
+</div>
+</div>
+
+<!-- MONSTER HOT-DOG -->
+<div class="box">
+<h3>Monster Hot-Dog</h3>
+
+<div class="item">
+Mini – 16 000
+<br>
+<button onclick="change('hotdog_mini',-1)">-</button>
+<span id="hotdog_mini">0</span>
+<button onclick="change('hotdog_mini',1)">+</button>
+</div>
+
+<div class="item">
+Oddiy – 18 000
+<br>
+<button onclick="change('hotdog_oddiy',-1)">-</button>
+<span id="hotdog_oddiy">0</span>
+<button onclick="change('hotdog_oddiy',1)">+</button>
+</div>
+
+<div class="item">
+Katta – 20 000
+<br>
+<button onclick="change('hotdog_katta',-1)">-</button>
+<span id="hotdog_katta">0</span>
+<button onclick="change('hotdog_katta',1)">+</button>
+</div>
+</div>
+
+<!-- SAVAT -->
+<div class="box">
 <h3>Savat</h3>
 <div id="cartText">Bo‘sh</div>
 <h3 id="total">Jami: 0</h3>
@@ -99,13 +172,27 @@ Tovuq Kabob 28 000
 <script>
 
 let prices={
-nonkabob:25000,
-tovuq:28000
+gosht_mini:26000,
+gosht_oddiy:32000,
+gosht_katta:38000,
+tovuq_mini:18000,
+tovuq_oddiy:22000,
+tovuq_katta:28000,
+hotdog_mini:16000,
+hotdog_oddiy:18000,
+hotdog_katta:20000
 };
 
 let counts={
-nonkabob:0,
-tovuq:0
+gosht_mini:0,
+gosht_oddiy:0,
+gosht_katta:0,
+tovuq_mini:0,
+tovuq_oddiy:0,
+tovuq_katta:0,
+hotdog_mini:0,
+hotdog_oddiy:0,
+hotdog_katta:0
 };
 
 function change(item,val){
@@ -119,14 +206,11 @@ function updateCart(){
 let text="";
 let total=0;
 
-if(counts.nonkabob>0){
-text+="Non Kabob x"+counts.nonkabob+"<br>";
-total+=counts.nonkabob*prices.nonkabob;
+for(let item in counts){
+if(counts[item]>0){
+text+=item.replaceAll("_"," ").toUpperCase()+" x"+counts[item]+"<br>";
+total+=counts[item]*prices[item];
 }
-
-if(counts.tovuq>0){
-text+="Tovuq Kabob x"+counts.tovuq+"<br>";
-total+=counts.tovuq*prices.tovuq;
 }
 
 if(text==="") text="Bo‘sh";
@@ -145,20 +229,17 @@ alert("Ism va telefonni kiriting");
 return;
 }
 
-let message="Yangi buyurtma!%0A%0A";
+let message="YANGI BUYURTMA%0A%0A";
 message+="Ism: "+name+"%0A";
 message+="Telefon: "+phone+"%0A%0A";
 
 let total=0;
 
-if(counts.nonkabob>0){
-message+="Non Kabob x"+counts.nonkabob+"%0A";
-total+=counts.nonkabob*prices.nonkabob;
+for(let item in counts){
+if(counts[item]>0){
+message+=item.replaceAll("_"," ").toUpperCase()+" x"+counts[item]+"%0A";
+total+=counts[item]*prices[item];
 }
-
-if(counts.tovuq>0){
-message+="Tovuq Kabob x"+counts.tovuq+"%0A";
-total+=counts.tovuq*prices.tovuq;
 }
 
 if(total===0){
@@ -168,7 +249,6 @@ return;
 
 message+="%0AJami: "+total+" so'm";
 
-// TOKEN va CHAT ID
 let token="8442880876:AAHUPkLI5QNjHRtaBelKoi6b8VxqZWFrboE";
 let chat_id="5118638769";
 
