@@ -1,259 +1,121 @@
-Азизович, [09.02.2026 21:05]
 <!DOCTYPE html>
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BizzKab Menu</title>
 
 <style>
 body{
-    margin:0;
-    font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-    background:#f3f3f3;
-}
-
-/* HEADER */
-.header{
-    background:#d32f2f;
-    color:white;
-    padding:15px;
+    font-family: Arial;
+    background:#fff5f0;
     text-align:center;
-    font-size:22px;
-    font-weight:700;
 }
+h1{color:#e63946;}
 
-/* CARD */
-.container{
-    padding:10px;
-}
-
-.card{
+.item{
     background:white;
-    margin:8px 0;
-    border-radius:14px;
-    display:flex;
-    padding:10px;
-    align-items:center;
+    width:260px;
+    margin:10px auto;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 0 10px #ddd;
 }
 
-.card img{
-    width:90px;
-    height:90px;
-    border-radius:12px;
-    object-fit:cover;
-}
-
-/* PLUS MINUS */
-.controls{
-    display:flex;
-    align-items:center;
-}
 .controls button{
-    width:32px;
-    height:32px;
-    border:none;
-    border-radius:50%;
-    background:#d32f2f;
-    color:white;
+    width:35px;
+    height:35px;
     font-size:18px;
 }
-.count{
-    margin:0 8px;
-    font-weight:bold;
+
+#cart{
+    background:white;
+    margin:20px auto;
+    width:300px;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 0 10px #ccc;
 }
 
-/* CART */
-.cart{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    background:#d32f2f;
+.btn{
+    display:inline-block;
+    padding:10px 20px;
+    background:#25D366;
     color:white;
-    padding:12px;
-    text-align:center;
-}
-.cart button{
-    background:white;
-    color:#d32f2f;
-    border:none;
-    padding:8px 12px;
-    border-radius:8px;
-    font-weight:bold;
+    text-decoration:none;
+    border-radius:5px;
+    margin-top:10px;
 }
 </style>
 </head>
-
 <body>
 
-<div class="header">BizzKab Fast Food</div>
+<h1>BizzKab Fast Food</h1>
 
-<div class="container">
-
-<h3>🍞 Non kabob — Mol go‘shtli</h3>
-
-<div class="card">
-<img src="RASM_1.jpg" id="img1">
-<div>
-<b>Non kabob MINI</b><br>
-26 000 so‘m
-</div>
-<div class="controls">
-<button onclick="minus(1)">-</button>
-<span class="count" id="c1">0</span>
-<button onclick="plus(1)">+</button>
-</div>
+<div class="item">
+    <h3>Non Kabob (25 000)</h3>
+    <div class="controls">
+        <button onclick="change('nonkabob', -1)">-</button>
+        <span id="nonkabob">0</span>
+        <button onclick="change('nonkabob', 1)">+</button>
+    </div>
 </div>
 
-<div class="card">
-<img src="RASM_2.jpg" id="img2">
-<div>
-<b>Non kabob ODDIY</b><br>
-32 000 so‘m
-</div>
-<div class="controls">
-<button onclick="minus(2)">-</button>
-<span class="count" id="c2">0</span>
-<button onclick="plus(2)">+</button>
-</div>
+<div class="item">
+    <h3>Tovuq Kabob (28 000)</h3>
+    <div class="controls">
+        <button onclick="change('tovuq', -1)">-</button>
+        <span id="tovuq">0</span>
+        <button onclick="change('tovuq', 1)">+</button>
+    </div>
 </div>
 
-<div class="card">
-<img src="RASM_3.jpg" id="img3">
-<div>
-<b>Non kabob KATTA</b><br>
-38 000 so‘m
-</div>
-<div class="controls">
-<button onclick="minus(3)">-</button>
-<span class="count" id="c3">0</span>
-<button onclick="plus(3)">+</button>
-</div>
-</div>
-
-<h3>🍗 Non kabob — Tovuq go‘shtli</h3>
-
-<div class="card">
-<img src="RASM_4.jpg" id="img4">
-<div>
-<b>Tovuq MINI</b><br>
-18 000 so‘m
-</div>
-<div class="controls">
-<button onclick="minus(4)">-</button>
-<span class="count" id="c4">0</span>
-<button onclick="plus(4)">+</button>
-</div>
-</div>
-
-<div class="card">
-<img src="RASM_5.jpg" id="img5">
-<div>
-<b>Tovuq ODDIY</b><br>
-22 000 so‘m
-</div>
-<div class="controls">
-<button onclick="minus(5)">-</button>
-<span class="count" id="c5">0</span>
-<button onclick="plus(5)">+</button>
-</div>
-</div>
-
-<div class="card">
-<img src="RASM_6.jpg" id="img6">
-<div>
-<b>Tovuq KATTA</b><br>
-28 000 so‘m
-</div>
-<div class="controls">
-<button onclick="minus(6)">-</button>
-<span class="count" id="c6">0</span>
-<button onclick="plus(6)">+</button>
-</div>
-</div>
-
-<h3>🌭 Monster Hot-dog</h3>
-
-<div class="card">
-<img src="RASM_7.jpg" id="img7">
-<div>
-<b>Monster MINI</b><br>
-16 000 so‘m
-</div>
-<div class="controls">
-<button onclick="minus(7)">-</button>
-<span class="count" id="c7">0</span>
-<button onclick="plus(7)">+</button>
-</div>
-</div>
-
-<div class="card">
-<img src="RASM_8.jpg" id="img8">
-<div>
-<b>Monster KATTA</b><br>
-20 000 so‘m
-</div>
-<div class="controls">
-<button onclick="minus(8)">-</button>
-<span class="count" id="c8">0</span>
-<button onclick="plus(8)">+</button>
-</div>
-</div>
-
-<div style="height:90px"></div>
-</div>
-
-<div class="cart">
-Jami: <span id="total">0</span> so‘m  
-<button onclick="sendTelegram()">Buyurtma berish</button>
+<div id="cart">
+    <h3>Savat</h3>
+    <div id="cartText">Hali buyurtma yo‘q</div>
+    <h3 id="total">Jami: 0 so'm</h3>
+    <a class="btn" id="orderBtn" href="#">WhatsApp orqali buyurtma</a>
 </div>
 
 <script>
 let prices = {
-1:26000, 2:32000, 3:38000,
-4:18000, 5:22000, 6:28000,
-7:16000, 8:20000
+    nonkabob:25000,
+    tovuq:28000
 };
 
-let counts = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0};
+let counts = {
+    nonkabob:0,
+    tovuq:0
+};
 
-function plus(id){
-    counts[id]++;
-    document.getElementById("c"+id).innerText = counts[id];
-    updateTotal();
+function change(item, val){
+    counts[item]+=val;
+    if(counts[item]<0) counts[item]=0;
+    document.getElementById(item).innerText=counts[item];
+    updateCart();
 }
 
-function minus(id){
-    if(counts[id] > 0){
-        counts[id]--;
-        document.getElementById("c"+id).innerText = counts[id];
-        updateTotal();
+function updateCart(){
+    let text="";
+    let total=0;
+
+    if(counts.nonkabob>0){
+        text+="Non Kabob x"+counts.nonkabob+"<br>";
+        total+=counts.nonkabob*prices.nonkabob;
     }
-}
 
-Азизович, [09.02.2026 21:05]
-function updateTotal(){
-    let total = 0;
-    for(let i=1;i<=8;i++){
-        total += counts[i]*prices[i];
+    if(counts.tovuq>0){
+        text+="Tovuq Kabob x"+counts.tovuq+"<br>";
+        total+=counts.tovuq*prices.tovuq;
     }
-    document.getElementById("total").innerText = total;
-}
 
-function sendTelegram(){
-    let msg = "🛒 Yangi BizzKab buyurtma:\n";
-    for(let i=1;i<=8;i++){
-        if(counts[i]>0){
-            msg += "Tovar "+i+": "+counts[i]+" dona\n";
-        }
-    }
-    msg += "💰 Jami: " + document.getElementById("total").innerText + " so‘m";
+    if(text==="") text="Hali buyurtma yo‘q";
 
-    let botToken = "SENING_BOT_TOKENING";
-    let chatID = "SENING_CHAT_ID";
+    document.getElementById("cartText").innerHTML=text;
+    document.getElementById("total").innerText="Jami: "+total+" so'm";
 
-    let url = https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatID}&text=${encodeURIComponent(msg)};
-    window.open(url);
+    let phone="998901234567"; // <-- shu yerga o'z raqamingizni yozing
+    let message=encodeURIComponent(text+"\nJami: "+total+" so'm");
+    document.getElementById("orderBtn").href="https://wa.me/"+phone+"?text="+message;
 }
 </script>
 
