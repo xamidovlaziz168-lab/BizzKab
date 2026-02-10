@@ -6,128 +6,93 @@
 
 <style>
 body{
-    font-family: Arial;
-    background:#b30000;
-    text-align:center;
-    margin:0;
-    padding:0;
-    color:#ffd700;
+background:#b30000;
+font-family:Arial;
+text-align:center;
+color:#ffd700;
+margin:0;
 }
 
-h1{
-    margin-top:20px;
-}
-
-.menu{
-    padding:20px;
-}
+h1{margin-top:20px;}
 
 .item{
-    background:#cc0000;
-    margin:15px auto;
-    width:280px;
-    padding:15px;
-    border-radius:12px;
-    box-shadow:0 0 10px rgba(0,0,0,0.4);
+background:#cc0000;
+width:280px;
+margin:15px auto;
+padding:15px;
+border-radius:10px;
 }
 
-.controls{
-    margin-top:10px;
-}
-
-.controls button{
-    width:40px;
-    height:40px;
-    font-size:20px;
-    border:none;
-    border-radius:6px;
-    background:#ffd700;
-    color:#b30000;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.count{
-    font-size:18px;
-    margin:0 10px;
+button{
+width:40px;
+height:40px;
+font-size:20px;
+background:#ffd700;
+color:#b30000;
+border:none;
+border-radius:5px;
 }
 
 #cart{
-    background:#990000;
-    width:300px;
-    margin:20px auto;
-    padding:15px;
-    border-radius:12px;
-    box-shadow:0 0 10px rgba(0,0,0,0.5);
+background:#990000;
+width:300px;
+margin:20px auto;
+padding:15px;
+border-radius:10px;
 }
 
 .orderBtn{
-    display:inline-block;
-    margin-top:10px;
-    padding:12px 20px;
-    background:#ffd700;
-    color:#b30000;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:bold;
+display:inline-block;
+margin-top:10px;
+padding:12px 20px;
+background:#ffd700;
+color:#b30000;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
 }
 </style>
 </head>
 <body>
 
 <h1>BizzKab Fast Food</h1>
-<p>Online buyurtma</p>
-
-<div class="menu">
 
 <div class="item">
-<h3>Non Kabob - 25 000 so'm</h3>
-<div class="controls">
+Non Kabob 25 000
+<br>
 <button onclick="change('nonkabob',-1)">-</button>
-<span class="count" id="nonkabob">0</span>
+<span id="nonkabob">0</span>
 <button onclick="change('nonkabob',1)">+</button>
 </div>
-</div>
 
 <div class="item">
-<h3>Tovuq Kabob - 28 000 so'm</h3>
-<div class="controls">
+Tovuq Kabob 28 000
+<br>
 <button onclick="change('tovuq',-1)">-</button>
-<span class="count" id="tovuq">0</span>
+<span id="tovuq">0</span>
 <button onclick="change('tovuq',1)">+</button>
-</div>
-</div>
-
-<div class="item">
-<h3>Lavaş - 30 000 so'm</h3>
-<div class="controls">
-<button onclick="change('lavash',-1)">-</button>
-<span class="count" id="lavash">0</span>
-<button onclick="change('lavash',1)">+</button>
-</div>
-</div>
-
 </div>
 
 <div id="cart">
 <h3>Savat</h3>
-<div id="cartText">Buyurtma yo‘q</div>
-<h3 id="total">Jami: 0 so'm</h3>
-<a id="orderBtn" class="orderBtn" href="#">Telegram orqali buyurtma</a>
+<div id="cartText">Bo‘sh</div>
+<h3 id="total">Jami: 0</h3>
+<button class="orderBtn" onclick="sendOrder()">Telegramga yuborish</button>
 </div>
 
 <script>
 
+// NARXLAR
 let prices={
 nonkabob:25000,
-tovuq:28000,
-lavash:30000
+tovuq:28000
 };
 
+// SONLAR
 let counts={
 nonkabob:0,
-tovuq:0,
-lavash:0
+tovuq:0
 };
 
 function change(item,val){
@@ -138,47 +103,58 @@ updateCart();
 }
 
 function updateCart(){
-
 let text="";
 let total=0;
 
 if(counts.nonkabob>0){
-text+="Non Kabob x"+counts.nonkabob+"%0A";
+text+="Non Kabob x"+counts.nonkabob+"<br>";
 total+=counts.nonkabob*prices.nonkabob;
 }
 
 if(counts.tovuq>0){
-text+="Tovuq Kabob x"+counts.tovuq+"%0A";
+text+="Tovuq Kabob x"+counts.tovuq+"<br>";
 total+=counts.tovuq*prices.tovuq;
 }
 
-if(counts.lavash>0){
-text+="Lavash x"+counts.lavash+"%0A";
-total+=counts.lavash*prices.lavash;
+if(text==="") text="Bo‘sh";
+
+document.getElementById("cartText").innerHTML=text;
+document.getElementById("total").innerText="Jami: "+total+" so'm";
 }
 
-if(text===""){
-document.getElementById("cartText").innerHTML="Buyurtma yo‘q";
-document.getElementById("total").innerText="Jami: 0 so'm";
-document.getElementById("orderBtn").href="#";
+// TELEGRAMGA YUBORISH
+function sendOrder(){
+
+let message="BizzKab buyurtma:%0A";
+let total=0;
+
+if(counts.nonkabob>0){
+message+="Non Kabob x"+counts.nonkabob+"%0A";
+total+=counts.nonkabob*prices.nonkabob;
+}
+
+if(counts.tovuq>0){
+message+="Tovuq Kabob x"+counts.tovuq+"%0A";
+total+=counts.tovuq*prices.tovuq;
+}
+
+if(total===0){
+alert("Buyurtma yo‘q");
 return;
 }
 
-document.getElementById("cartText").innerHTML=
-text.replaceAll("%0A","<br>");
+message+="Jami: "+total+" so'm";
 
-document.getElementById("total").innerText=
-"Jami: "+total+" so'm";
+// BOT MA'LUMOTLARI
+let token="8442880876:AAHUPkLI5QNjHRtaBelKoi6b8VxqZWFrboE";
+let chat_id="5118638769";
 
-text+="Jami: "+total+" so'm";
 
-// BU YERGA TELEGRAM USERNAME yoziladi
-let username="your_username";
+let url="https://api.telegram.org/bot"+token+"/sendMessage?chat_id="+chat_id+"&text="+message;
 
-document.getElementById("orderBtn").href=
-"https://t.me/"+username+"?text="+text;
-
+window.open(url,"_blank");
 }
+
 </script>
 
 </body>
