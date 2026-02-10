@@ -41,13 +41,21 @@ padding:15px;
 border-radius:10px;
 }
 
+input{
+width:90%;
+padding:10px;
+margin:5px;
+border-radius:5px;
+border:none;
+}
+
 .orderBtn{
 display:inline-block;
 margin-top:10px;
 padding:12px 20px;
 background:#ffd700;
 color:#b30000;
-text-decoration:none;
+border:none;
 border-radius:8px;
 font-weight:bold;
 cursor:pointer;
@@ -57,6 +65,13 @@ cursor:pointer;
 <body>
 
 <h1>BizzKab Fast Food</h1>
+
+<!-- MIJOZ MA'LUMOTI -->
+<div id="cart">
+<h3>Mijoz ma'lumoti</h3>
+<input id="name" placeholder="Ismingiz">
+<input id="phone" placeholder="Telefon raqam">
+</div>
 
 <div class="item">
 Non Kabob 25 000
@@ -83,13 +98,11 @@ Tovuq Kabob 28 000
 
 <script>
 
-// NARXLAR
 let prices={
 nonkabob:25000,
 tovuq:28000
 };
 
-// SONLAR
 let counts={
 nonkabob:0,
 tovuq:0
@@ -122,10 +135,20 @@ document.getElementById("cartText").innerHTML=text;
 document.getElementById("total").innerText="Jami: "+total+" so'm";
 }
 
-// TELEGRAMGA YUBORISH
 function sendOrder(){
 
-let message="BizzKab buyurtma:%0A";
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+
+if(name==="" || phone===""){
+alert("Ism va telefonni kiriting");
+return;
+}
+
+let message="Yangi buyurtma!%0A%0A";
+message+="Ism: "+name+"%0A";
+message+="Telefon: "+phone+"%0A%0A";
+
 let total=0;
 
 if(counts.nonkabob>0){
@@ -143,14 +166,15 @@ alert("Buyurtma yo‘q");
 return;
 }
 
-message+="Jami: "+total+" so'm";
+message+="%0AJami: "+total+" so'm";
 
-// BOT MA'LUMOTLARI
+// TOKEN va CHAT ID
 let token="8442880876:AAHUPkLI5QNjHRtaBelKoi6b8VxqZWFrboE";
 let chat_id="5118638769";
 
-
-let url="https://api.telegram.org/bot"+token+"/sendMessage?chat_id="+chat_id+"&text="+message;
+let url="https://api.telegram.org/bot"+token+
+"/sendMessage?chat_id="+chat_id+
+"&text="+message;
 
 window.open(url,"_blank");
 }
